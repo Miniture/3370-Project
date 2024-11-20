@@ -5,11 +5,12 @@ light gray-blue: #c7ede4
 lighter minty-blue: #d5fff3
 accent red: #e85f5c
 dark blue: #0c1821
+even lighter minty blue: #eafff9
 */
 
 body {
     display: block;
-    background-color: #d5fff3;
+    background-color: #eafff9;
     color: #0c1821;
     width: 80%;
     margin: auto;
@@ -25,13 +26,15 @@ div {
     margin-bottom: 20px;
 }
 
-h1 {
+h1, h2, h3 {
     margin: 10px;
 }
 
-h2 {
-    margin: 10px;
+h3 {
+    width: 100%;
 }
+
+
 /* nav {
     display: inline-flex;
 } */
@@ -120,6 +123,15 @@ form {
     border: 1px dashed #0c1821;
 }
 
+.quizAnswer form {
+    display: inline-flex;
+    flex-flow: row wrap;
+    /* background-color: #c7ede4;
+    border: 1px dotted #0c1821; */
+    justify-content: center;
+    width: 60%;
+}
+
 form input {
     margin-top: 10px;
 }
@@ -130,4 +142,61 @@ form input {
 
 .audioBox {
     width: 70%;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+th {
+    
+    /* border-bottom: 1px solid black; */
+   
+}
+
+td {
+    border: 1px solid black;
+}
+
+tr:hover {
+    background-color: #d5fff3;
+}
+
+/* tr:nth-child(even) {
+    background-color: #c7ede4;
+}
+
+tr:nth-child(odd) {
+    background-color: #d5fff3;
+} */
+
+.quizQuestion {
+    height: 60%;
+    width: 60%;
+    border: 1px solid black;
+    margin: 10px;
+    
+}
+
+.quizAnswer {
+    height: 60%;
+    width: 60%;
+    /* border: 1px solid green; */
+    margin: 10px;
+
+    
+}
+
+.quizAnswer input {
+    border: none;
+    
+}
+
+.answerRadio {
+    /* border: 1px solid blue; */
+    width: 40%;
+    margin: 5px;
+    
 }
