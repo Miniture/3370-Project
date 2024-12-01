@@ -18,20 +18,48 @@
     </div>
     <div class="content container">
         <div class="circle">
-            <h3>Mastery</h3>
-            <p>stuff</p>
+            <h2>Mastery:</h2>
+            <p>Beginner</p>
+            <div class="help-icon" onclick="toggleModal()">?</div>
+            <div class="modal-container" id="modalContainer">
+                <div class="modal-content">
+                    <h1>Mastery Explained</h1>
+                    <h3>Beginner (0-100 Hours)</h3>
+                    <p>Beginner difficulty quizzes are recommended.</p>
+                    <h3>Intermediate (100-750 Hours)</h3>
+                    <p>Intermediate difficulty quizzes are recommended.</p>
+                    <h3>Advanced (750-2500 Hours)</h3>
+                    <p>Advanced difficulty quizzes are recommended.</p>
+                    <h3>Master (2500+ Hours)</h3>
+                    <p>Congratulations! You have mastered this language.</p>
+                    <button onclick="toggleModal()">Close</button>
+                </div>
+            </div>
         </div>
         <div class="square">
-           <h3>Account</h3>
-           <p>stuff</p>
+           <h2>Account</h2>
+           <p>{name}</p>
         </div>
         <div class="circle">
-            <h3>Total Hours</h3>
-            <p>stuff</p>
+            <h2>Total Hours:</h2>
+            <p>20 Hours</p>
+            <div class="help-icon" onclick="toggleModal2()">?</div>
+            <div class="modal-container" id="modalContainer2">
+                <div class="modal-content">
+                    <h1>Hours Explained</h1>
+                    <h4>Your total hours are calculated by adding up your active listening hours and active practice time.</h4>
+                    <br>
+                    <p>Your current active listening hours have reached <b>15 hours</b></p>
+                    <br>
+                    <p>Your current active practice hours have reached <b>5 hours</b></p>
+                    <button onclick="toggleModal2()">Close</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="container">
         <form>
+            <h2>Choose a Language:</h2>
             <input type="radio" id="english" name="langSelect" value="English" checked="checked">
             <label for="english">English</label>
             <input type="radio" id="spanish" name="langSelect" value="Spanish">
@@ -40,6 +68,26 @@
             <label for="german">German</label>
         </form>
     </div>
+
+    <script>
+        function toggleModal() {
+            const modalContainer = document.getElementById("modalContainer");
+            const isVisible = modalContainer.style.display === "flex";
+    
+            // Toggle visibility
+            modalContainer.style.display = isVisible ? "none" : "flex";
+        }
+    </script>
+
+    <script>
+        function toggleModal2() {
+            const modalContainer = document.getElementById("modalContainer2");
+            const isVisible = modalContainer.style.display === "flex";
+
+            // Toggle visibility
+            modalContainer.style.display = isVisible ? "none" : "flex";
+        }
+    </script>
     
 </body>
 </html>
