@@ -57,6 +57,7 @@
             <tbody class="scrollable">
                 <?php
                 require 'php/config.php';
+				$insert = false;
 
                 if(isset($_GET['searchWord'])) {
                     $filter = $_GET['searchWord'];
@@ -65,12 +66,13 @@
                 } elseif(isset($_GET['searchTag'])) {
                     $filter = $_GET['searchTag'];
                     $sql = "SELECT * FROM `words` WHERE `wordTags` LIKE '%$filter%' or `wordEnglish` LIKE '%$filter%'";
-                } elseif(isset($_GET['addWord'])) {
+                } elseif(isset($_GET['newWord'])) {
                     // this is the one that doesn't work
                     // add a new word to list, not including translation
-                    $newWord = $_GET['addWord'];
+                    $newWord = $_GET['newWord'];
                     $sql = "INSERT INTO words (word) VALUES ('$newWord')";
-                    
+					$sql2 = "SELECT * FROM words";
+					$insert = true;
 
                 } else {
                     $sql = "SELECT * FROM words";
@@ -82,6 +84,11 @@
                     die("Invalid query:" . $conne->error);
                 }
 
+				if ( $result ) {
+					if ( $insert ) {
+						$result = $conn->query($sql2);
+					}
+				}
 
                 //read data of each row
                 while($row = $result->fetch_assoc()) {
