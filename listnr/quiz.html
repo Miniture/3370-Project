@@ -10,64 +10,89 @@
     <div class="header">
         <div class="title-section">
             <h1>Listnr:</h1>
-            <h2>Subtitle?</h2>
+            <h2>Audio Quizzes</h2>
         </div>
         <nav id="nav">
             <!-- js nav here -->
         </nav>
     </div>
-    <div class="container">
-        <h3>Audio Quizzes</h3>
-        <table>
-            <tr>
-                <th>Subject</th>
-                <th>Level</th>
-            </tr>
-            <tr>
-                <td>words</td>
-                <td>Beginner</td>
-            </tr>
-            <tr>
-                <td>also words</td>
-                <td>Intermediate</td>
-            </tr>
-            <tr>
-                <td>more words</td>
-                <td>Advanced</td>
-            </tr>
-        </table>
-    </div>
-    <div class="container">
-        <h3>Quiz: (quiz name)</h3>
-        <div class="quizQuestion">
-            <h4>Question 1:</h4>
-            <p>Cuenco sobre una mesa?</p>
-        </div>
-        <div class="quizAnswer">
-            <form>
-                <div class="answerRadio">
-                    <input type="radio" id="answer1" name="quizAnswerSelect" value="Answer 1" checked="checked">
-                    <label for="answer1">Answer 1</label>
-                </div>
-
-                <div class="answerRadio">
-                    <input type="radio" id="answer2" name="quizAnswerSelect" value="Answer 2">
-                    <label for="answer2">Answer 2</label>
-                </div>
-
-                <div class="answerRadio">
-                    <input type="radio" id="answer3" name="quizAnswerSelect" value="Answer 3">
-                    <label for="answer3">Answer 3</label>
-                </div>
-
-                <div class="answerRadio">
-                    <input type="radio" id="answer4" name="quizAnswerSelect" value="Answer 4">
-                    <label for="answer4">Answer 4</label>
-                </div>
-            </form>
-        </div>
-    </div>
     
-    
+    <div class="container">
+        <label for="quizSelect">Choose a Quiz Difficulty:</label>
+
+        <select name="quizSelect" id="quiz-select">
+            <option value="q1">Beginner</option>
+            <option value="q2">Intermediate</option>
+            <option value="q3">Advanced</option>
+        </select>
+    </div>
+
+    <main>
+        <div class="start-quiz">
+            <button onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <div class="modal-container" id="score-modal">
+            <div class="modal-content-container">
+                <h1>Congratulations, Quiz Completed.</h1>
+                <div class="grade-details">
+                    <p>Attempts: 5</p>
+                    <p>Wrong Answers: <span id="wrong-answers"></span></p>
+                    <p>Right Answers: <span id="right-answers"></span></p>
+                    <p>Grade: <span id="grade-percentage"></span>%</p>
+                    <p><span id="remarks"></span></p>
+                </div>
+                <div class="modal-button-container">
+                    <button onclick="closeScoreModal()">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h3>Quiz: <span id="quiz-name">Quiz Name</span></h3>
+            <div class="quizQuestion">
+                <h4>Score: <span id="player-score"></span> / 5</h4>
+                <h4>Question: <span id="question-number"></span> / 5</h4>
+                <h3 id="display-question"></h3>
+            </div>
+
+            <div class="quizAnswer">
+                <form>
+                    <div class="answerRadio">
+                        <input type="radio" id="option-one" name="option" class="radio" value="A" />
+                        <label for="option-one" class="option" id="option-one-label"></label>
+                    </div>
+
+                    <div class="answerRadio">
+                        <input type="radio" id="answer2" name="option" value="B" />
+                        <label for="answer2" class="option" id="option-two-label"></label>
+                    </div>
+
+                    <div class="answerRadio">
+                        <input type="radio" id="answer3" name="option" value="C" />
+                        <label for="answer3" class="option" id="option-three-label"></label>
+                    </div>
+
+                    <div class="answerRadio">
+                        <input type="radio" id="answer4" name="option" value="D" />
+                        <label for="answer4" class="option" id="option-four-label"></label>
+                    </div>
+                </form>
+            </div>
+            <button id="read-question-btn">Read Question</button>
+           <button id ="nextQuestionButton">Next Question</button>
+        </div>
+        <div id="lesson-recommendation">
+            <p>Recommended Lesson: <span id="lesson-label"></span></p>
+        </div>
+        <div id="past-attempts">
+            <h3>Past Quiz Attempts</h3>
+            <ul id="attempts-list">
+                <!-- Past attempts will be displayed here -->
+            </ul>
+        </div>
+    </main>
+
+    <script defer src="js/quiz.js"></script>
 </body>
 </html>
