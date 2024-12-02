@@ -29,11 +29,19 @@
     <div class="wordSearch">
         <form action="" method="GET">
             <div>
-                <button type="submit">Search</button>
-                <input type="text" name="search" value="<?php if (isset($_GET['search'])){echo $_GET['search'];} ?>" 
+                <button type="submit">Search Word</button>
+                <input type="text" name="searchWord" value="<?php if (isset($_GET['searchWord'])){echo $_GET['searchWord'];} ?>">
             </div>
         </form>
-    </div
+    </div>
+    <div class="tagSearch">
+        <form action="" method="GET">
+            <div>
+                <button type="submit">Search Tag</button>
+                <input type="text" name="searchTag" value="<?php if (isset($_GET['searchTag'])){echo $_GET['searchTag'];} ?>">
+            </div>
+        </form>
+    </div>
     <br>
 
     <div class="container" id="library">
@@ -50,33 +58,29 @@
                 <?php
                 require 'php/config.php';
 
-                if(isset($_GET['search'])) {
-                    $filter = $_GET['search'];
+                if(isset($_GET['searchWord'])) {
+                    $filter = $_GET['searchWord'];
                     $sql = "SELECT * FROM `words` WHERE `word` LIKE '%$filter%' or `wordEnglish` LIKE '%$filter%'";
-                        $result = $conn->query($sql);
                         
-                        if (!$result) {
-                            die("Invalid query:" . $conne->error);
-                        }
+                } elseif(isset($_GET['searchTag'])) {
+                    $filter = $_GET['searchTag'];
+                    $sql = "SELECT * FROM `words` WHERE `wordTags` LIKE '%$filter%' or `wordEnglish` LIKE '%$filter%'";
                 } elseif(isset($_GET['addWord'])) {
                     // this is the one that doesn't work
                     // add a new word to list, not including translation
                     $newWord = $_GET['addWord'];
                     $sql = "INSERT INTO words (word) VALUES ('$newWord')";
-                    $result = $conn->query($sql);
-                        
-                        if (!$result) {
-                            die("Invalid query:" . $conne->error);
-                        }
+                    
 
                 } else {
                     $sql = "SELECT * FROM words";
-                        $result = $conn->query($sql);
-                        
-                        if (!$result) {
-                            die("Invalid query:" . $conne->error);
-                        }
+                       
                 }       
+
+                $result = $conn->query($sql);
+                if (!$result) {
+                    die("Invalid query:" . $conne->error);
+                }
 
 
                 //read data of each row
@@ -102,10 +106,10 @@
         <form action="" method="GET">
             <div>
                 <button type="submit">Add Word</button>
-                <input type="text" name="newWord" value="<?php if (isset($_GET['newWord'])){echo $_GET['newWord'];} ?>" 
+                <input type="text" name="newWord" value="<?php if (isset($_GET['newWord'])){echo $_GET['newWord'];} ?>"> 
             </div>
         </form>
-    </div
+    </div>
     
 </body>
 </html>
