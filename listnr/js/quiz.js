@@ -6,7 +6,7 @@ let indexNumber = 0; // Index for accessing the shuffled questions array
 
 // Function to fetch questions from getQuestions.php based on selected difficulty
 function fetchQuestions(difficulty) {
-    fetch(`getQuestions.php?difficulty=${difficulty}`)
+    fetch(`http://localhost/Listnr/php/getQuestions.php?difficulty=${difficulty}`)
         .then(response => {
             console.log('Response:', response);
             if (!response.ok) {
