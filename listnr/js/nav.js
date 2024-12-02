@@ -1,7 +1,7 @@
 nav.innerHTML = `
 <ul>
     <li><a href="index.htm">Account</a></li>
-    <li><a href="words.html">Word Library</a></li>
+    <li><a href="words.php">Word Library</a></li>
     <li><a href="audio.html">Audio Learning</a></li>
     <li><a href="quiz.html">Quiz</a></li>
     
@@ -16,5 +16,3 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
 	}
 })
 
-//sections for navbar from
-//https://www.w3schools.com/css/css_navbar_horizontal.asp

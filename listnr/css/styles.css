@@ -179,6 +179,16 @@ form {
     border: 1px dashed #0c1821;
 }
 
+.wordSearch form{
+    border: none;
+    background-color: transparent;
+}
+
+.wordAdd form{
+    background-color: transparent;
+}
+
+
 .quizAnswer form {
     display: inline-flex;
     flex-flow: row wrap;
@@ -256,3 +266,81 @@ tr:nth-child(odd) {
     margin: 5px;
     
 }
+
+/*.listContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    margin: 10px;
+    width: 10%;
+}
+
+.listContainer ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+    background-color: #628395;
+    display: inline-flex;
+    justify-content: center;
+    align-items: left;
+    flex-flow: column wrap;
+}
+
+.listContainer li {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.listTitle {
+    border-bottom: 1px solid black;
+    color: #628395;
+    background-color: #c7ede4;
+}
+*/
+#library {
+    width: 100%;
+}
+
+thead, tbody {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+      max-height: 200px;
+      border: none;
+}
+
+/*#library table {
+    border: none;
+    width: 100%;
+}*/
+
+.scrollable {
+/*      display: block;*/
+      
+}
+
+#library th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: auto;
+    min-width: 10%;
+}
+
+
+#library td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: auto;
+    min-width: 10%;
+}
+
+
+#library tr:hover {
+    background-color: #d5fff3;
+}
+
+
+
+
+
