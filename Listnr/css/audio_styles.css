@@ -1,26 +1,14 @@
-/* 
-colors:
-medium gray-blue: #628395
-light gray-blue: #c7ede4
-lighter minty-blue: #d5fff3
-accent red: #e85f5c
-dark blue: #0c1821
-even lighter minty blue: #eafff9
-*/
-
 body {
     display: block;
     background-color: #eafff9;
     color: #0c1821;
     width: 80%;
     margin: auto;
-    
 }
 
 div {
     text-align: center;
-    
-} 
+}
 
 .header {
     margin-bottom: 20px;
@@ -34,11 +22,6 @@ h3 {
     width: 100%;
 }
 
-
-/* nav {
-    display: inline-flex;
-} */
-
 nav ul {
     margin: 0;
     padding: 0;
@@ -48,7 +31,6 @@ nav ul {
     display: inline-flex;
     justify-content: center;
     flex-flow: row wrap;
-    
 }
 
 nav li {
@@ -59,8 +41,7 @@ li a {
     display: block;
     padding: 15px;
     text-decoration: none;
-    color:  #d5fff3;
-    
+    color: #d5fff3;
 }
 
 li a:hover {
@@ -78,22 +59,11 @@ li:active {
 
 .container {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column; /* Ensure vertical stacking */
     justify-content: center;
     margin: 10px;
-    /* border: 2px solid #0c1821; */
+    text-align: center; /* Center the content */
 }
-
-
-
-/* .content {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-} */
 
 .square {
     border: 3px solid #0c1821;
@@ -133,42 +103,46 @@ li:active {
     font-size: 16px;
 }
 
-/* Modal container (background overlay) */
-.modal-container {
-    position: fixed;
-    top: 0;
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
 }
 
-/* Modal content */
 .modal-content {
-    background: white;
+    background-color: #fefefe;
+    margin: auto;
     padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px; /* Maximum width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
     border-radius: 8px;
-    width: 500px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Close button styling (optional) */
-.modal-content button {
-    margin-top: 15px;
-    padding: 10px 15px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
-.modal-content button:hover {
-    background: #0056b3;
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 form {
@@ -179,21 +153,18 @@ form {
     border: 1px dashed #0c1821;
 }
 
-.wordSearch form{
+.wordSearch form {
     border: none;
     background-color: transparent;
 }
 
-.wordAdd form{
+.wordAdd form {
     background-color: transparent;
 }
-
 
 .quizAnswer form {
     display: inline-flex;
     flex-flow: row wrap;
-    /* background-color: #c7ede4;
-    border: 1px dotted #0c1821; */
     justify-content: center;
     width: 60%;
 }
@@ -211,28 +182,30 @@ form input {
 }
 
 #audioRecords {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-/* Style for the table */
+#sampleButtons,
+#addAudioButton {
+    margin-bottom: 20px; /* Add some spacing */
+}
+
 table {
     border: 1px solid black;
     border-collapse: collapse;
     width: 50%;
+    margin: 20px auto; /* Center the table and add some spacing */
 }
 
-th {
-    
-    /* border-bottom: 1px solid black; */
-   
-}
-
+th,
 td {
     border: 1px solid black;
+    padding: 10px;
+    text-align: center;
 }
 
 tr:hover {
@@ -244,104 +217,46 @@ tr:hover {
     width: 60%;
     border: 1px solid black;
     margin: 10px;
-    
 }
 
 .quizAnswer {
     height: 60%;
     width: 60%;
-    /* border: 1px solid green; */
     margin: 10px;
-
-    
 }
 
 .quizAnswer input {
     border: none;
-    
 }
 
 .answerRadio {
-    /* border: 1px solid blue; */
     width: 40%;
     margin: 5px;
-    
 }
 
-/*.listContainer {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: left;
-    margin: 10px;
-    width: 10%;
-}
-
-.listContainer ul {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    list-style: none;
-    background-color: #628395;
-    display: inline-flex;
-    justify-content: center;
-    align-items: left;
-    flex-flow: column wrap;
-}
-
-.listContainer li {
-    padding: 10px;
-    border: 1px solid black;
-}
-
-.listTitle {
-    border-bottom: 1px solid black;
-    color: #628395;
-    background-color: #c7ede4;
-}
-*/
 #library {
     width: 100%;
 }
 
-thead, tbody {
+thead,
+tbody {
     display: block;
     width: 100%;
     overflow-y: auto;
-      max-height: 200px;
-      border: none;
-}
-
-/*#library table {
+    max-height: 200px;
     border: none;
-    width: 100%;
-}*/
+}
 
 .scrollable {
-/*      display: block;*/
-      
 }
 
-#library th {
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: auto;
-    min-width: 10%;
-}
-
-
+#library th,
 #library td {
     border: 1px solid black;
     border-collapse: collapse;
-    width: auto;
     min-width: 10%;
 }
-
 
 #library tr:hover {
     background-color: #d5fff3;
 }
-
-
-
-
-
