@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Listnr</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script defer src="js/nav.js"></script>
+    </head>
+<body>
+    <div class="header">
+        <div class="title-section">
+            <h1>Listnr:</h1>
+            <h2>Subtitle</h2>
+        </div>
+        <nav id="nav">
+            
+        </nav>
+    </div>
+    <div class="content container">
+        <div class="circle">
+            <h2>Mastery:</h2>
+            <p id="userMastery">Beginner</p>
+            <div class="help-icon" onclick="toggleModal()">?</div>
+            <div class="modal-container" id="modalContainer">
+                <div class="modal-content">
+                    <h1>Mastery Explained</h1>
+                    <h3>Beginner (0-100 Hours)</h3>
+                    <p>Beginner difficulty quizzes are recommended.</p>
+                    <h3>Intermediate (100-750 Hours)</h3>
+                    <p>Intermediate difficulty quizzes are recommended.</p>
+                    <h3>Advanced (750-2500 Hours)</h3>
+                    <p>Advanced difficulty quizzes are recommended.</p>
+                    <h3>Master (2500+ Hours)</h3>
+                    <p>Congratulations! You have mastered this language.</p>
+                    <button onclick="toggleModal()">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="square">
+           <h2>Account</h2>
+           <p id="userName"></p>
+		   <p id="userEmail"></p>
+		   <p id="userPhone"></p>
+		   <p id="userPrimaryLanguage"></p>
+        </div>
+        <div class="circle">
+            <h2>Total Hours:</h2>
+            <p id="userHours">0 Hours</p>
+            <div class="help-icon" onclick="toggleModal2()">?</div>
+            <div class="modal-container" id="modalContainer2">
+                <div class="modal-content">
+                    <h1>Hours Explained</h1>
+                    <h4>Your total hours are calculated by adding up your active listening hours and active practice time.</h4>
+                    <br>
+                    <p>Your active listening hours are increased by listening to audio sessions.</p>
+                    <br>
+                    <p>Your active practice hours are increased by completing quizzes.</p>
+                    <button onclick="toggleModal2()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form id="languageForm">
+            <h2>Choose a Language:</h2>
+            <input type="radio" id="english" name="langSelect" value="English" checked="checked">
+            <label for="english">English</label>
+            <input type="radio" id="spanish" name="langSelect" value="Spanish">
+            <label for="spanish">Spanish</label>
+            <input type="radio" id="german" name="langSelect" value="German">
+            <label for="german">German</label>
+        </form>
+    </div>
+
+    <script>
+        function toggleModal() {
+            const modalContainer = document.getElementById("modalContainer");
+            const isVisible = modalContainer.style.display === "flex";
+    
+            // Toggle visibility
+            modalContainer.style.display = isVisible ? "none" : "flex";
+        }
+    </script>
+
+    <script>
+        function toggleModal2() {
+            const modalContainer = document.getElementById("modalContainer2");
+            const isVisible = modalContainer.style.display === "flex";
+
+            // Toggle visibility
+            modalContainer.style.display = isVisible ? "none" : "flex";
+        }
+    </script>
+	
+	<script>
+		function getUserInfo() {
+		
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "http://localhost/Listnr/php/select_user.php", true);
+			xhr.onload = function() {
+                if (xhr.status === 200) {
+				
+					$myArr = xhr.responseText.split(',');
+                    document.getElementById("userName").innerHTML = $myArr[0];
+					document.getElementById("userEmail").innerHTML = $myArr[1];
+					document.getElementById("userPhone").innerHTML = $myArr[2];
+					document.getElementById("userPrimaryLanguage").innerHTML = $myArr[3];
+					document.getElementById("userHours").innerHTML = $myArr[4] + " Hours";
+					document.getElementById("userMastery").innerHTML = $myArr[5];
+					
+					var userLanguage = $myArr[3];
+					var languageForm = document.getElementById("languageForm");
+					var radios = languageForm.querySelectorAll('input[name="langSelect"]');
+
+					radios.forEach(radio => {
+						if (radio.value === userLanguage) {
+							radio.checked = true;
+						} else {
+							radio.checked = false;
+						}
+					});
+                }
+            };
+			
+			xhr.send();
+			
+		}
+		
+		window.onload = getUserInfo;
+	</script>
+	
+	<script>
+	
+		const form = document.getElementById('languageForm');
+
+		form.addEventListener('change', (event) => {
+			if (event.target.name === 'langSelect') { 
+				setUserlanguage(event.target.value); 
+			}
+		});
+	</script>
+	
+	<script>
+		function setUserlanguage(curLanguage) {
+		
+			const lang = document.getElementById("userPrimaryLanguage");
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "http://localhost/Listnr/php/set_language.php", true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.onload = function() {
+                if (xhr.status === 200) {
+					lang.innerHTML = curLanguage;
+					console.log(xhr.responseText);
+                }
+            };
+			
+			xhr.send("userPrimaryLanguage=" + encodeURIComponent(curLanguage));
+			
+		}
+	</script>
+    
+</body>
+</html>

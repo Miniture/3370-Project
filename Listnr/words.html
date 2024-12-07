@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Listnr</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script defer src="js/nav.js"></script>
+    </head>
+<body>
+    <div class="header">
+        <div class="title-section">
+            <h1>Listnr:</h1>
+        </div>
+        <nav id="nav">
+            <!-- js nav here -->
+        </nav>
+    </div>
+
+    <div class="listContainer">
+        <ul>
+            <li class="listTitle">Choose A List</li>
+            <li><a href="">A List</a></li>
+            <li><a href="">A List</a></li>
+            <li><a href="">A List</a></li>
+            <li><a href="">A List</a></li>
+        </ul>
+    </div>
+    <div class="container" id="library">
+        <table>
+            <thead>
+                <th>Word</th>
+                <th>Translation</th>
+                <th>Definition</th>
+                <th>Type</th>
+                <th>Tags</th>
+                <th>Pronounce</th>
+            </thead>
+            <tbody class="scrollable">
+                <?php
+                require 'php/config.php';
+
+                $sql = "SELECT * FROM words";
+                $result = $conn->query($sql);
+                
+                if (!$result) {
+                    die("Invalid query:" . $conne->error);
+                }
+
+                //read data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "
+                        <tr>
+                            <th>" . $row["word"] . "</th>
+                            <th>" . $row["wordEnglish"] . "</th>
+                            <th>" . $row["wordDefinition"] . "</th>
+                            <th>" . $row["wordType"] . "</th>
+                            <th>" . $row["wordTags"] . "</th>
+                            <th>" . $row["wordPronunciation"] . "</th>
+                        </tr>
+                        ";
+
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div>
+        <?php
+        require 'php/config.php';
+        
+        ?>
+    </div
+    
+
+
+</body>
+</html>

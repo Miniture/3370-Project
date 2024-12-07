@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Listnr</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/nav.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="title-section">
+            <h1>Listnr:</h1>
+            <br>
+        </div>
+        <nav id="nav">
+            <!-- js nav here -->
+        </nav>
+    </div>
+    <div class="container">
+        <h2>Listen and Play Audio Recordings</h2>
+        <br>
+        <p>Click on the audio recordings below to listen to and play the audio recordings to better strengthen your language fluency knowledge. There are two
+            languages, Spanish and German. Both languages have three audio recordings to learn about the topics of Introduction, People, and Numbers. 
+            This will help in your fluency and working on learning to speak the language!</p>
+        
+		
+		<h2>Swap Account View</h2>
+		<button id="basicAccountBtn">Sign Into Basic Account</button>
+		<button id="adminAccountBtn">Sign Into Admin Account</button>
+
+        <div id="audioRecords"></div>
+
+        <h3>Custom Audio Recordings</h3>
+		<div id="addAudioButton">
+			<button onclick="openModal()">Add Audio</button>
+		</div>
+		<p></p>
+        <div id="customAudioRecords">
+			<table id="customAudioTable"></table>
+		</div>
+    </div>
+
+    <!-- Modal for adding new audio -->
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add New Audio</h2>
+            <label for="audioName">Audio Name:</label>
+            <input type="text" id="audioName" name="audioName">
+            <br>
+            <label for="audioFile">Audio File:</label>
+            <input type="file" id="audioFile" name="audioFile">
+            <br>
+            <button onclick="addNewAudio()">Submit</button>
+        </div>
+    </div>
+    
+    <script src="js/audio_files.js"></script>
+</body>
+</html>
